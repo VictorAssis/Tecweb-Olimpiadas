@@ -6,6 +6,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
 	<title>Olimpiadas</title>
 
+
 	<!-- Fonts do Google Fonts -->
 	<link href='https://fonts.googleapis.com/css?family=Open+Sans|Raleway' rel='stylesheet' type='text/css'>
 
@@ -19,7 +20,6 @@
 	<!-- Arquivos de Estilo -->
 	<link rel="stylesheet" type="text/css" href="style/reset.css">
 	<link rel="stylesheet" type="text/css" href="style/estilos.css">
-	<link rel="stylesheet" type="text/css" href="style/responsivo.css">
 
 	<!-- Inclui jQuery -->
 	<script type="text/javascript" src="scripts/jquery-1.12.1.min.js"></script>
@@ -29,7 +29,6 @@
 <body class="<?php bodyClass(); ?>">
 	<header id="cabecalho" class="cabecalho-inicial">
 		<a class="logo" href="index.php">Rio 2016</a>
-		<a class="botao-menu"><i class="fa fa-bars"></i></a>
 		<ul class="menu">
 			<li><a href="index.php#eventos">Eventos</a></li>
 			<li><a href="modalidades.php">Modalidades</a></li>

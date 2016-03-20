@@ -1,7 +1,7 @@
 <?php include ("header.php"); ?>
 <section id="content" class="container">
 	<h1 class="titulo-pagina">Futebol</h1>
-	<img class="img-responsive" src="images/banner-modalidade.jpg">
+	<img src="images/banner-modalidade.jpg">
 	<h2 class="subtitulo-modalidade">Ficha Técnica</h2>
 	<table class="tabela-ficha">
 		<tr>

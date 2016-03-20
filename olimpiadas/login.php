@@ -10,7 +10,7 @@
 	        <p class="form-group"><label for="password">Senha: </label>
 	        <input type="password" name="password" placeholder="Senha" class="campo"></p>
 	        <input type="submit" value ="Login" class="botao">        
-			<br><br><a href="esqueceusuasenha.php">Esqueceu sua senha?</a>
+			<br><br><a href="novasenha.html">Esqueceu sua senha?</a>
 		</form>
 	</div>
 	<div class="coluna50">

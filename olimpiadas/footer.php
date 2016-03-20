@@ -9,14 +9,10 @@
 	<script type="text/javascript">
 		$(document).ready(function(){
 			// Mantém banner da home com altura da tela
-			if ($(window).width() > 768) {
+			$(".banner-home").height($(window).height());
+			$(window).resize(function(){
 				$(".banner-home").height($(window).height());
-				$(window).resize(function(){
-					$(".banner-home").height($(window).height());
-				});
-			} else {
-				$(".menu").addClass("menu-recolhido");
-			}
+			});
 
 			//Muda classes do menu on scroll
 			$(window).scroll(function(){
@@ -31,6 +27,12 @@
 			    animation: "fade",
 			    controlNav: false,
 			    directionNav: false,
+			    slideshowSpeed: 4000
+			});
+
+			// Slide local
+			$('.slider-local').flexslider({
+			    animation: "fade",
 			    slideshowSpeed: 4000
 			});
 

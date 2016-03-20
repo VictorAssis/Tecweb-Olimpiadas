@@ -18,7 +18,6 @@
 	<!-- Arquivos de Estilo -->
 	<link rel="stylesheet" type="text/css" href="style/reset.css">
 	<link rel="stylesheet" type="text/css" href="style/estilos.css">
-	<link rel="stylesheet" type="text/css" href="style/responsivo.css">
 	<!-- Estilos Jquery UI -->
 	<link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
 

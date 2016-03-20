@@ -8,7 +8,7 @@
 				<li><img  src="images/locais/manaus/arena_amazonas1.jpg" width="1150" height="457"/></li>
 				<li><img  src="images/locais/manaus/arena_amazonas2.jpg" width="1150" height="457"/></li>
 				<li><img  src="images/locais/manaus/arena_amazonas3.jpg" width="1150" height="457"/></li>
-				x
+				
 			</ul>
 		</div>
 	</div>
