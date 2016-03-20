@@ -21,9 +21,6 @@ a:hover {
 }
 
 /* CABEÇALHO  */
-#cabecalho .botao-menu {
-	display: none;
-}
 #cabecalho {
 	position: fixed;
 	top: 0;
@@ -115,6 +112,47 @@ body.home #cabecalho.cabecalho-inicial .logo {
     max-width: 100%;
     min-height: 100%;
 }
+
+
+
+.banner-local {
+	width: 100%;
+	overflow: hidden;
+}
+.banner-local .overlay {
+	background: rgba(0,48,91,0.45);
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	top: 0;
+	left: 0;
+	z-index: 9;
+}
+.banner-local .chamada-banner {
+	font-size: 30px;
+	font-family: 'Raleway', sans-serif;
+	font-weight: 500;
+	position: absolute;
+	bottom: 30px;
+	left: 50%;
+	transform:translateX(-50%);
+	max-width: 400px;
+	color: #fff;
+	text-align: center;
+	z-index: 10;
+}
+.banner-local .chamada-banner i {
+	font-size: 40px;
+}
+.slider-local  img {
+    max-width: 100%;
+    min-height: 100%;
+}
+
+
+
+
+
 body.home #cabecalho.cabecalho-inicial .menu a {
 	color: #fff;
 	margin-top: 40px;
@@ -421,9 +459,4 @@ select.campo {
 .tabela-ficha .nome-ficha {
 	font-weight: bold;
 	color: #00B33B;
-}
-
-.img-responsive {
-	max-width: 100%;
-	height: auto;
 }
