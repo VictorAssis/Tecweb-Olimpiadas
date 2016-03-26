@@ -1,4 +1,9 @@
-<?php include("init.php"); ?>
+<?php
+	if (!isset($_SESSION["Usuario"]) || $_SESSION["Usuario"]["usuarios_tipos_id"] != 1) {
+		header("Location: index.php");
+		die();
+	}
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -34,6 +39,6 @@
 			<li><a href="admin-eventos-listar.php">Eventos</a></li>
 			<li><a href="admin-locais-listar.php">Locais</a></li>
 			<li><a href="admin-modalidades-listar.php">Modalidades</a></li>
-			<li><a href="index.php">Sair</a></li>
+			<li><a href="logout.php">Sair</a></li>
 		</ul>
 	</header>

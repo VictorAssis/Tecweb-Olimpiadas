@@ -1,4 +1,7 @@
-<?php include("header-admin.php"); ?>
+<?php
+	include("init.php");
+	include("header-admin.php");
+?>
 <section id="content" class="container">
 	<h1 class="titulo-pagina">Bem vindo {{Nome do Admin}}.</h1>
 	<div class="coluna50">

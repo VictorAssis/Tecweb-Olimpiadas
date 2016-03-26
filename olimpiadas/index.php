@@ -1,8 +1,9 @@
 <?php
 	global $classBody;
 	$classBody = array("home");
+	include("init.php");
+	include("header.php");
 ?>
-<?php include("header.php"); ?>
 <section id="content">
 	<div class="banner-home">
 		<div class="slider-home">

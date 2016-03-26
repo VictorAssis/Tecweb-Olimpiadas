@@ -16,6 +16,23 @@ function bodyClass() {
 	}
 }
 
+//Funções para exibir mensagens
+function mensagemSucesso($texto) {
+	echo "<div class=\"container\">";
+	echo "<div class=\"alerta alerta-sucesso\">";
+	echo "<p>{$texto}</p>";
+	echo "</div>";
+	echo "</div>";
+}
+function mensagemErro($texto) {
+	echo "<div class=\"container\">";
+	echo "<div class=\"alerta alerta-erro\">";
+	echo "<p>{$texto}</p>";
+	echo "</div>";
+	echo "</div>";
+}
+
+
 //Instancia o banco e o deixa global
 global $db;
 $database = new Database();

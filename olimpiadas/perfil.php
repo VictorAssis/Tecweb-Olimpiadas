@@ -1,5 +1,5 @@
 <?php
-	$logado = true;  
+	include("init.php");
 	include("header.php");
 ?>
 <section id="content" class="container">

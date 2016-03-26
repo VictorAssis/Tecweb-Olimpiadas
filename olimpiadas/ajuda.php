@@ -1,6 +1,7 @@
-<?php include ("header.php"); ?>
-
-
+<?php
+include ("init.php");
+include ("header.php");
+?>
 <section id="content" class="container">
   <h1 class="titulo-pagina">Ajuda</h1>
 
@@ -45,4 +46,4 @@
   });
   
   </script>
-<?php include ("footer.php"); ?>s
+<?php include ("footer.php"); ?>

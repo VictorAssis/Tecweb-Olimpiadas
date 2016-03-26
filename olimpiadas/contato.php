@@ -1,5 +1,7 @@
-<?php include ("header.php"); ?>
-
+<?php
+include ("init.php");
+include ("header.php");
+?>
 <section id="content" class="container" >
     <form name="frmcontato">
         <h1 class="titulo-pagina">Entre em contato</h1>

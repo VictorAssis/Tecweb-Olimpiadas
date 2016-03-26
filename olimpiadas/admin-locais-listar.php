@@ -1,4 +1,7 @@
-<?php include("header-admin.php"); ?>
+<?php
+	include("init.php");
+	include("header-admin.php");
+?>
 <section id="content" class="container">
 	<h1 class="titulo-pagina">Locais <a class="botao botao-titulo" href="admin-locais-add.php">Adicionar novo</a></h1>
 	<table class="table tabela-eventos">

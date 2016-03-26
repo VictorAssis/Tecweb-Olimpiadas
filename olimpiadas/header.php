@@ -1,4 +1,3 @@
-<?php include("init.php"); ?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -35,12 +34,12 @@
 			<li><a href="locais.php">Locais</a></li>
 			<li><a href="ajuda.php">Ajuda</a></li>
 			<li><a href="contato.php">Contato</a></li>
-			<?php if (!isset($logado)) { ?>
-			<li><a href="login.php">Login</a></li>
-			<?php } else { ?>
+			<?php if (isset($_SESSION['Usuario']) && $_SESSION["Usuario"]["usuarios_tipos_id"] == 2) { ?>
 			<li><a href="meus-eventos.php">Meus Eventos</a></li>
 			<li><a href="perfil.php">Perfil</a></li>
-			<li><a href="index.php">Sair</a></li>
+			<li><a href="logout.php">Sair</a></li>
+			<?php } else { ?>
+			<li><a href="login.php">Login</a></li>
 			<?php } ?>
 		</ul>
 	</header>

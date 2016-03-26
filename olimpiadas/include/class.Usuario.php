@@ -52,7 +52,7 @@ class Usuario {
 	 */
 	public function __construct(){
 		global $db;
-		$this->$conn = $db;
+		$this->conn = $db;
 	}
 
 	/**
@@ -60,7 +60,7 @@ class Usuario {
 	 *
 	 * @return Array
 	 */
-	public function list() {
+	public function find() {
 		//Monta query do banco
 		$query = "SELECT * FROM {$this->table_name}";
 		$stmt = $this->conn->prepare($query);
@@ -74,7 +74,7 @@ class Usuario {
 	 * @param int $id Id do usuário desejada
 	 * @return Array
 	 */
-	public function list($id) {
+	public function findById($id) {
 		//Monta query do banco
 		$query = "SELECT * FROM {$this->table_name} WHERE id = ?";
 		$stmt = $this->conn->prepare($query);
@@ -218,7 +218,7 @@ class Usuario {
 		$this->senha = md5($this->senha);
 
 		//Monta query do banco
-		$query = "SELECT id FROM {$this->table_name} WHERE email = ? AND senha = ?";
+		$query = "SELECT id, usuarios_tipos_id, nome, email FROM {$this->table_name} WHERE email = ? AND senha = ?";
 		$stmt = $this->conn->prepare($query);
 
 		//Executa passando os valores
@@ -233,9 +233,10 @@ class Usuario {
             return array(
             	"response" =>true,
             	"Usuario" => array(
-            		"id" => $result[0]->id,
-            		"nome" => $result[0]->nome,
-            		"email" => $result[0]->email
+            		"id" => $result[0]['id'],
+            		"usuarios_tipos_id" => $result[0]['usuarios_tipos_id'],
+            		"nome" => $result[0]['nome'],
+            		"email" => $result[0]['email']
             	)
             );
         }else

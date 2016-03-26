@@ -1,4 +1,7 @@
-<?php include("header-admin.php"); ?>
+<?php
+	include("init.php");
+	include("header-admin.php");
+?>
 <section id="content" class="container">
 	<h1 class="titulo-pagina">Modalidades <a class="botao botao-titulo" href="admin-modalidades-add.php">Adicionar novo</a></h1>
 	<table class="table tabela-eventos">

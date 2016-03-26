@@ -1,4 +1,5 @@
 <?php  
+	include("init.php");
 	include("header.php");
 ?>
  <img src="images/locais/world.png" alt="Planets" usemap="#world">

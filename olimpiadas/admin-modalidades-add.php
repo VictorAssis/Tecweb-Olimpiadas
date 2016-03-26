@@ -1,4 +1,7 @@
-<?php include("header-admin.php"); ?>
+<?php
+    include("init.php");
+    include("header-admin.php");
+?>
 <section id="content" class="container">
 	<h1 class="titulo-pagina">Adicionar Modalidade <a class="link-voltar" href="javascript: history.go(-1);">< Voltar</a></h1>
 	<form>

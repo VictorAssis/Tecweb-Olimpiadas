@@ -1,4 +1,7 @@
-<?php include ("header.php"); ?>
+<?php
+include ("init.php");
+include ("header.php");
+?>
 <section id="content" class="container">
 	<h1 class="titulo-pagina">Modalidades</h1>
 	<ol class="lista-interativa">
