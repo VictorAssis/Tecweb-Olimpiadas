@@ -485,3 +485,18 @@ select.campo {
     background: #F2FFF4;
     border-color: #9FC7B1;
 }
+
+/* CAMPOS DE UPLOAD */
+.preview-foto {
+	height: 70px;
+	width: auto;
+	max-width: 100%;
+	max-height: 100%;
+	box-shadow: 0 0 10px rgba(0,0,0,0.5);
+}
+.alterar-foto {
+	font-size: 14px;
+	display: block;
+	text-transform: uppercase;
+	cursor: pointer;
+}
