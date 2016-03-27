@@ -1,5 +1,9 @@
 <?php
 	include("init.php");
+
+	$modalidade = new Modalidade();
+	$itens = $modalidade->find();
+
 	include("header-admin.php");
 ?>
 <section id="content" class="container">
@@ -14,31 +18,31 @@
 			</tr>
 		</thead>
 		<tbody>
+		<?php 
+			if ($itens) { 
+				foreach ($itens as $item) {
+		?>
 			<tr>
-				<td>1</td>
-				<td>Futebol</td>
-				<td><a class="botao-comprar" href="admin-modalidades-edit.php"><i class="fa fa-pencil"></i></a></td>
-				<td><a class="botao-comprar" href="javascript: confirm('Tem certeza que deseja excluir este registro?')"><i class="fa fa-trash"></i></a></td>
+				<td><?php echo $item['id']; ?></td>
+				<td><?php echo $item['nome']; ?></td>
+				<td><a class="botao-comprar" href="admin-modalidades-edit.php?id=<?php echo $item['id']; ?>"><i class="fa fa-pencil"></i></a></td>
+				<td>
+					<form action="" method="post">
+						<input type="hidden" name="id" value="<?php echo $item['id']; ?>" />
+						<button type="submit" name="btnExcluir" class="botao-comprar" onclick="return confirm('Tem certeza que deseja excluir este registro?');">
+							<i class="fa fa-trash"></i>
+						</button>
+					</form>
+				</td>
 			</tr>
+		<?php
+				}
+			} else {
+		?>
 			<tr>
-				<td>2</td>
-				<td>Voleibol</td>
-				<td><a class="botao-comprar" href="admin-modalidades-edit.php"><i class="fa fa-pencil"></i></a></td>
-				<td><a class="botao-comprar" href="javascript: confirm('Tem certeza que deseja excluir este registro?')"><i class="fa fa-trash"></i></a></td>
+				<td colspan="4">Nenhuma modalidade encontrada.</td>
 			</tr>
-			<tr>
-				<td>3</td>
-				<td>Volei de Praia</td>
-				<td><a class="botao-comprar" href="admin-modalidades-edit.php"><i class="fa fa-pencil"></i></a></td>
-				<td><a class="botao-comprar" href="javascript: confirm('Tem certeza que deseja excluir este registro?')"><i class="fa fa-trash"></i></a></td>
-			</tr>
-			<tr>
-				<td>4</td>
-				<td>Ginastica Artistica</td>
-				<td><a class="botao-comprar" href="admin-modalidades-edit.php"><i class="fa fa-pencil"></i></a></td>
-				<td><a class="botao-comprar" href="javascript: confirm('Tem certeza que deseja excluir este registro?')"><i class="fa fa-trash"></i></a></td>
-			</tr>
-
+		<?php } ?>
 		</tbody>
 	</table>
 </section>

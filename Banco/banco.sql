@@ -70,7 +70,7 @@ ENGINE = InnoDB;
 -- Table `olimpiadas`.`modalidades`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `olimpiadas`.`modalidades` (
-  `id` INT(11) UNSIGNED NOT NULL,
+  `id` INT(11) UNSIGNED NOT NULL AUTO_INCREMENT,
   `nome` VARCHAR(100) NOT NULL,
   `foto_destaque` VARCHAR(100) NOT NULL,
   `foto_lista` VARCHAR(100) NOT NULL,
