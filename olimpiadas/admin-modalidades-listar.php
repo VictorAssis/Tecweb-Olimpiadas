@@ -5,7 +5,10 @@
 
 	if (isset($_POST["btnExcluir"])) {
 		$modalidade->id = $_POST["id"];
-		$modalidade->delete();
+		if ($modalidade->delete())
+			mensagemSucesso("Modalidade deletada com sucesso.");
+		else
+			mensagemErro("Falha ao deletar modalidade, tente novamente.");
 	}
 
 	$itens = $modalidade->find();

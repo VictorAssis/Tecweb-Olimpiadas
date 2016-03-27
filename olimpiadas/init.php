@@ -18,18 +18,34 @@ function bodyClass() {
 
 //Funções para exibir mensagens
 function mensagemSucesso($texto) {
-	echo "<div class=\"container\">";
-	echo "<div class=\"alerta alerta-sucesso\">";
-	echo "<p>{$texto}</p>";
-	echo "</div>";
-	echo "</div>";
+	if (!isset($_SESSION["Mensagens"]))
+		$_SESSION["Mensagens"] = array();
+
+	$mensagem = "<div class=\"container\">";
+	$mensagem .= "<div class=\"alerta alerta-sucesso\">";
+	$mensagem .= "<p>{$texto}</p>";
+	$mensagem .= "</div>";
+	$mensagem .= "</div>";
+	$_SESSION["Mensagens"][] = $mensagem;
+
 }
 function mensagemErro($texto) {
-	echo "<div class=\"container\">";
-	echo "<div class=\"alerta alerta-erro\">";
-	echo "<p>{$texto}</p>";
-	echo "</div>";
-	echo "</div>";
+	if (!isset($_SESSION["Mensagens"]))
+		$_SESSION["Mensagens"] = array();
+
+	$mensagem = "<div class=\"container\">";
+	$mensagem .= "<div class=\"alerta alerta-erro\">";
+	$mensagem .= "<p>{$texto}</p>";
+	$mensagem .= "</div>";
+	$mensagem .= "</div>";
+	$_SESSION["Mensagens"][] = $mensagem;
+}
+function exibirMensagens() {
+	if (isset($_SESSION['Mensagens'])) {
+		foreach ($_SESSION['Mensagens'] as $msg)
+			echo $msg;
+		unset($_SESSION['Mensagens']);
+	}
 }
 
 

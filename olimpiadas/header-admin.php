@@ -42,3 +42,4 @@
 			<li><a href="logout.php">Sair</a></li>
 		</ul>
 	</header>
+	<?php exibirMensagens(); ?>

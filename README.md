@@ -27,6 +27,7 @@ O trabalho foi dividido em duas etapas, sendo a primeira para entrega do Front-e
       |-- scripts (Scripts Javascript utilizados no front)
       |-- style (Estilos e fonts aplicatidos no site)
       |-- times (TXT com integrantes do grupo)
+      |-- uploads (arquivos enviados pela aplicação)
  
 ## Checklists
 

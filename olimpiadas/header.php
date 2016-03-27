@@ -5,7 +5,6 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
 	<title>Olimpiadas</title>
 
-
 	<!-- Fonts do Google Fonts -->
 	<link href='https://fonts.googleapis.com/css?family=Open+Sans|Raleway' rel='stylesheet' type='text/css'>
 
@@ -43,3 +42,4 @@
 			<?php } ?>
 		</ul>
 	</header>
+	<?php exibirMensagens(); ?>
