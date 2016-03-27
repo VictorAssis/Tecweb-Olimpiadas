@@ -2,6 +2,12 @@
 	include("init.php");
 
 	$modalidade = new Modalidade();
+
+	if (isset($_POST["btnExcluir"])) {
+		$modalidade->id = $_POST["id"];
+		$modalidade->delete();
+	}
+
 	$itens = $modalidade->find();
 
 	include("header-admin.php");
