@@ -244,4 +244,49 @@ class Usuario {
             	"response" => false
             );
 	}
+
+	/**
+	 * Reseta senha e envia por e-mail
+	 *
+	 * @return Array Contém resposta boolean
+	 */
+	public function resetPassword() {
+		//Pega data atual
+		$this->modified = date("Y-m-d H:i:s");
+
+		//Gera senha randomica
+		$characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
+	    $charactersLength = strlen($characters);
+	    $senha = '';
+	    for ($i = 0; $i < 8; $i++) {
+	        $senha .= $characters[rand(0, $charactersLength - 1)];
+	    }
+		$this->senha = md5($senha);
+
+		//Monta query do banco
+		$query = "UPDATE {$this->table_name} SET
+			senha = ?,
+			modified = ?
+		WHERE 
+			email = ?";
+		$stmt = $this->conn->prepare($query);
+
+		//Executa passando os valores
+		$valores = array(
+ 			$this->senha,
+ 			$this->modified,
+ 			$this->email
+ 		);
+ 		$result = $stmt->execute($valores);
+
+ 		$html = "<p>A sua senha de acesso ao sistema foi resetada para <b>{$senha}</b></p>";
+ 		mail($this->email, "Nova senha", $html);
+
+ 		//Retorna o resultado
+        if($result){
+            return true;
+        }else{
+            return false;
+        }
+	}
 }
