@@ -1,5 +1,18 @@
 <?php
 	include("init.php");
+
+	$evento = new Evento();
+
+	if (isset($_POST["btnExcluir"])) {
+		$evento->id = $_POST["id"];
+		if ($evento->delete())
+			mensagemSucesso("Evento deletado com sucesso.");
+		else
+			mensagemErro("Falha ao deletar evento, tente novamente.");
+	}
+
+	$itens = $evento->find();
+
 	include("header-admin.php");
 ?>
 <section id="content" class="container">
@@ -18,106 +31,35 @@
 			</tr>
 		</thead>
 		<tbody>
+		<?php 
+			if ($itens) { 
+				foreach ($itens as $item) {
+		?>
 			<tr>
-				<td>1</td>
-				<td>03 Ago 2016 13h - 18h</td>
-				<td>Futebol</td>
-				<td>Feminino - primeira fase (FB001)</td>
-				<td>Estádio Olímpico</td>
-				<td>40,00 - 70,00</td>
-				<td><a class="botao-comprar" href="admin-eventos-edit.php"><i class="fa fa-pencil"></i></a></td>
-				<td><a class="botao-comprar" href="javascript: confirm('Tem certeza que deseja excluir este registro?')"><i class="fa fa-trash"></i></a></td>
+				<td><?php echo $item['id']; ?></td>
+				<td><?php echo date('d/m/Y H:i:s',strtotime($item['data'])); ?></td>
+				<td><?php echo $item['modalidade']; ?></td>
+				<td><?php echo $item['descricao']; ?></td>
+				<td><?php echo $item['local']; ?></td>
+				<td><?php echo number_format($item['preco'],2,',',''); ?></td>
+				<td><a class="botao-comprar" href="admin-eventos-edit.php?id=<?php echo $item['id']; ?>"><i class="fa fa-pencil"></i></a></td>
+				<td>
+					<form action="" method="post">
+						<input type="hidden" name="id" value="<?php echo $item['id']; ?>" />
+						<button type="submit" name="btnExcluir" class="botao-comprar" onclick="return confirm('Tem certeza que deseja excluir este registro?');">
+							<i class="fa fa-trash"></i>
+						</button>
+					</form>
+				</td>
 			</tr>
+		<?php
+				}
+			} else {
+		?>
 			<tr>
-				<td>2</td>
-				<td>03 Ago 2016 13h - 18h</td>
-				<td>Futebol</td>
-				<td>Feminino - primeira fase (FB001)</td>
-				<td>Estádio Olímpico</td>
-				<td>40,00 - 70,00</td>
-				<td><a class="botao-comprar" href="admin-eventos-edit.php"><i class="fa fa-pencil"></i></a></td>
-				<td><a class="botao-comprar" href="javascript: confirm('Tem certeza que deseja excluir este registro?')"><i class="fa fa-trash"></i></a></td>
+				<td colspan="8">Nenhum evento encontrado.</td>
 			</tr>
-			<tr>
-				<td>3</td>
-				<td>03 Ago 2016 13h - 18h</td>
-				<td>Futebol</td>
-				<td>Feminino - primeira fase (FB001)</td>
-				<td>Estádio Olímpico</td>
-				<td>40,00 - 70,00</td>
-				<td><a class="botao-comprar" href="admin-eventos-edit.php"><i class="fa fa-pencil"></i></a></td>
-				<td><a class="botao-comprar" href="javascript: confirm('Tem certeza que deseja excluir este registro?')"><i class="fa fa-trash"></i></a></td>
-			</tr>
-			<tr>
-				<td>4</td>
-				<td>03 Ago 2016 13h - 18h</td>
-				<td>Futebol</td>
-				<td>Feminino - primeira fase (FB001)</td>
-				<td>Estádio Olímpico</td>
-				<td>40,00 - 70,00</td>
-				<td><a class="botao-comprar" href="admin-eventos-edit.php"><i class="fa fa-pencil"></i></a></td>
-				<td><a class="botao-comprar" href="javascript: confirm('Tem certeza que deseja excluir este registro?')"><i class="fa fa-trash"></i></a></td>
-			</tr>
-			<tr>
-				<td>5</td>
-				<td>03 Ago 2016 13h - 18h</td>
-				<td>Futebol</td>
-				<td>Feminino - primeira fase (FB001)</td>
-				<td>Estádio Olímpico</td>
-				<td>40,00 - 70,00</td>
-				<td><a class="botao-comprar" href="admin-eventos-edit.php"><i class="fa fa-pencil"></i></a></td>
-				<td><a class="botao-comprar" href="javascript: confirm('Tem certeza que deseja excluir este registro?')"><i class="fa fa-trash"></i></a></td>
-			</tr>
-			<tr>
-				<td>6</td>
-				<td>03 Ago 2016 13h - 18h</td>
-				<td>Futebol</td>
-				<td>Feminino - primeira fase (FB001)</td>
-				<td>Estádio Olímpico</td>
-				<td>40,00 - 70,00</td>
-				<td><a class="botao-comprar" href="admin-eventos-edit.php"><i class="fa fa-pencil"></i></a></td>
-				<td><a class="botao-comprar" href="javascript: confirm('Tem certeza que deseja excluir este registro?')"><i class="fa fa-trash"></i></a></td>
-			</tr>
-			<tr>
-				<td>7</td>
-				<td>03 Ago 2016 13h - 18h</td>
-				<td>Futebol</td>
-				<td>Feminino - primeira fase (FB001)</td>
-				<td>Estádio Olímpico</td>
-				<td>40,00 - 70,00</td>
-				<td><a class="botao-comprar" href="admin-eventos-edit.php"><i class="fa fa-pencil"></i></a></td>
-				<td><a class="botao-comprar" href="javascript: confirm('Tem certeza que deseja excluir este registro?')"><i class="fa fa-trash"></i></a></td>
-			</tr>
-			<tr>
-				<td>8</td>
-				<td>03 Ago 2016 13h - 18h</td>
-				<td>Futebol</td>
-				<td>Feminino - primeira fase (FB001)</td>
-				<td>Estádio Olímpico</td>
-				<td>40,00 - 70,00</td>
-				<td><a class="botao-comprar" href="admin-eventos-edit.php"><i class="fa fa-pencil"></i></a></td>
-				<td><a class="botao-comprar" href="javascript: confirm('Tem certeza que deseja excluir este registro?')"><i class="fa fa-trash"></i></a></td>
-			</tr>
-			<tr>
-				<td>9</td>
-				<td>03 Ago 2016 13h - 18h</td>
-				<td>Futebol</td>
-				<td>Feminino - primeira fase (FB001)</td>
-				<td>Estádio Olímpico</td>
-				<td>40,00 - 70,00</td>
-				<td><a class="botao-comprar" href="admin-eventos-edit.php"><i class="fa fa-pencil"></i></a></td>
-				<td><a class="botao-comprar" href="javascript: confirm('Tem certeza que deseja excluir este registro?')"><i class="fa fa-trash"></i></a></td>
-			</tr>
-			<tr>
-				<td>10</td>
-				<td>03 Ago 2016 13h - 18h</td>
-				<td>Futebol</td>
-				<td>Feminino - primeira fase (FB001)</td>
-				<td>Estádio Olímpico</td>
-				<td>40,00 - 70,00</td>
-				<td><a class="botao-comprar" href="admin-eventos-edit.php"><i class="fa fa-pencil"></i></a></td>
-				<td><a class="botao-comprar" href="javascript: confirm('Tem certeza que deseja excluir este registro?')"><i class="fa fa-trash"></i></a></td>
-			</tr>
+		<?php } ?>
 		</tbody>
 	</table>
 </section>

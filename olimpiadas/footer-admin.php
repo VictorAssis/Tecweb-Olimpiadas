@@ -11,24 +11,32 @@
 	<script type="text/javascript">
 		$(document).ready(function(){
 			// Máscaras
-			$(".campodata").mask("99/99/9999");
+      $(".campodata").mask("99/99/9999");
+			$(".campodatahora").mask("99/99/9999 99:99");
    		$(".campocpf").mask("999.999.99-99");
    		$(".campofone").mask("(99)9999-9999?9");
-   		$(".campopreco").mask("9,99?9",{placeholder:" "}).keyup(function(){
-   			valorAtual = $(this).val();
-   			//console.log(valorAtual.substring(valorAtual.length - 1));
-   			if (valorAtual.substring(valorAtual.length - 1) != " ") {
-   				$(this).unmask();
-   				mascara = "";
-   				for(var i = 0;i < valorAtual.length - 1;i++) {
-   					if (i == valorAtual.length - 3)
-   						mascara += ",";
-   					mascara += "9";
-   				}
-   				mascara += "?9";
-   				$(this).val(valorAtual.replace(",","")).mask(mascara,{placeholder:" "});
-   			}
-   		});
+      $(".campopreco").each(function(){
+        if(!$(this).val())
+          var mascaraInicial = "9,99?9";
+        else
+          var mascaraInicial = "9,99?9";
+
+     		$(this).mask(mascaraInicial,{placeholder:" "}).keyup(function(){
+     			valorAtual = $(this).val();
+     			//console.log(valorAtual.substring(valorAtual.length - 1));
+     			if (valorAtual.substring(valorAtual.length - 1) != " ") {
+     				$(this).unmask();
+     				mascara = "";
+     				for(var i = 0;i < valorAtual.length - 1;i++) {
+     					if (i == valorAtual.length - 3)
+     						mascara += ",";
+     					mascara += "9";
+     				}
+     				mascara += "?9";
+     				$(this).val(valorAtual.replace(",","")).mask(mascara,{placeholder:" "});
+     			}
+     		});
+      });
 
    		//Multiplo select
    		$(".selectMultiple").multipleSelect({

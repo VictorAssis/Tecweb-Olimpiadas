@@ -56,7 +56,7 @@ class Evento {
 	 */
 	public function find() {
 		//Monta query do banco
-		$query = "SELECT * FROM {$this->table_name}";
+		$query = "SELECT eventos.*, modalidades.nome as modalidade, locais.nome as local FROM {$this->table_name} INNER JOIN locais ON eventos.locais_id = locais.id INNER JOIN modalidades ON eventos.modalidades_id = modalidades.id";
 		$stmt = $this->conn->prepare($query);
  		$stmt->execute();
  		return $stmt->fetchAll();
@@ -86,6 +86,9 @@ class Evento {
 	public function create() {
 		//Pega data atual
 		$this->modified = $this->created = date("Y-m-d H:i:s");
+
+		//Formata data para Mysql
+		$this->data = substr($this->data, 6, 4) . '-' . substr($this->data, 3, 2) . '-' . substr($this->data, 0, 2) . substr($this->data, 10) . ':00';
 
 		//Monta query do banco
 		$query = "INSERT INTO {$this->table_name}

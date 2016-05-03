@@ -33,6 +33,13 @@
 
     $item = $modalidade->findById($_GET['id']);
     $item = $item[0];
+
+    $modalidade = new Modalidade();
+    $modalidades = $modalidade->find();
+
+    $local = new Local();
+    $locais = $local->find();
+
     include("header-admin.php");
 ?>
 <section id="content" class="container">

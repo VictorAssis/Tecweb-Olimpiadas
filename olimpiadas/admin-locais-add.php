@@ -4,7 +4,7 @@
 ?>
 <section id="content" class="container">
 	<h1 class="titulo-pagina">Adicionar Local <a class="link-voltar" href="javascript: history.go(-1);">< Voltar</a></h1>
-	<form>
+	<form method="post" action="">
 		<p class="form-group">
             <label for="nome">Nome</label>
             <input type="text" id="nome" class="campo" placeholder="Belo Horizonte" required="required" />

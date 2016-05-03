@@ -43,6 +43,7 @@
 
 			// Máscaras
 			$(".campodata").mask("99/99/9999");
+			$(".campodatahora").mask("99/99/9999 99:99");
        		$(".campocpf").mask("999.999.99-99");
        		$(".campofone").mask("(99)9999-9999?9");
 		});
