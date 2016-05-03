@@ -1,14 +1,14 @@
 <?php
 /**
- * Classe Evento
+ * Classe Local
  *
  * Esta classe é responsável pela manipulação dos dados
- * de eventos cadastrados no banco.
+ * de locais cadastrados no banco.
  *
  * @author Victor Assis <contato@victorassis.com.br>
  * @copyright 2016 Victor Assis
  */
-class Evento {
+class Local {
 	/**
 	 * Dados de conexão
 	 *
@@ -16,26 +16,20 @@ class Evento {
 	 * @var string Nome da tabela no banco
 	 */
 	private $conn;
-	private $table_name = "eventos";
+	private $table_name = "locais";
 
 	/**
-	 * Propriedades dos eventos
+	 * Propriedades dos locais
 	 *
 	 * @var int ID do evento
-	 * @var int ID do local
-	 * @var int ID da modalidade
-	 * @var string Data de acontecimento do evento
-	 * @var string Descrição do evento
-	 * @var string Preço para acessar evento
+	 * @var string Nome do local
+	 * @var string Descrição do local
 	 * @var string Data de última alteração no registro
 	 * @var string Data de criação do registro
 	 */
 	public $id;
-	public $locais_id;
-	public $modalidades_id;
-	public $data;
+	public $nome;
 	public $descricao;
-	public $preco;
 	public $modified;
 	public $created;
 
@@ -50,7 +44,7 @@ class Evento {
 	}
 
 	/**
-	 * Lista todos os eventos cadastradas no banco
+	 * Lista todos os locais cadastradas no banco
 	 *
 	 * @return Array
 	 */
@@ -63,9 +57,9 @@ class Evento {
 	}
 
 	/**
-	 * Lista o evento com um id específico
+	 * Lista o local com um id específico
 	 *
-	 * @param int $id Id do evento desejado
+	 * @param int $id Id do local desejado
 	 * @return Array
 	 */
 	public function findById($id) {
@@ -79,7 +73,7 @@ class Evento {
 	}
 
 	/**
-	 * Cria um novo evento a partir das propriedades da classe
+	 * Cria um novo local a partir das propriedades da classe
 	 *
 	 * @return Boolean True se cadastrou e false se aconteceu algum erro
 	 */
@@ -90,25 +84,19 @@ class Evento {
 		//Monta query do banco
 		$query = "INSERT INTO {$this->table_name}
 			(id,
-			locais_id,
-			modalidades_id,
-			data,
+			nome,
 			descricao,
-			preco,
 			modified,
 			created)
 		VALUES
-			(?,?,?,?,?,?,?,?)";
+			(?,?,?,?,?)";
 		$stmt = $this->conn->prepare($query);
 
 		//Executa passando os valores
  		$result = $stmt->execute(array(
  			$this->id,
- 			$this->locais_id,
- 			$this->modalidades_id,
- 			$this->data,
+ 			$this->nome,
  			$this->descricao,
- 			$this->preco,
  			$this->modified,
  			$this->created
  		));
@@ -122,7 +110,7 @@ class Evento {
 	}
 
 	/**
-	 * Atualiza um evento a partir das propriedades da classe
+	 * Atualiza um local a partir das propriedades da classe
 	 *
 	 * @return Boolean True se atualizou e False se aconteceu algum erro
 	 */
@@ -132,11 +120,8 @@ class Evento {
 
 		//Monta query do banco
 		$query = "UPDATE {$this->table_name} SET
-			locais_id = ?,
-			modalidades_id = ?,
-			data = ?,
+			nome = ?,
 			descricao = ?,
-			preco = ?,
 			modified = ?
 		WHERE 
 			id = ?";
@@ -144,11 +129,8 @@ class Evento {
 
 		//Executa passando os valores
  		$result = $stmt->execute(array(
- 			$this->locais_id,
- 			$this->modalidades_id,
- 			$this->data,
+ 			$this->nome,
  			$this->descricao,
- 			$this->preco,
  			$this->modified,
  			$this->id
  		));
@@ -162,7 +144,7 @@ class Evento {
 	}
 
 	/**
-	 * Deleta um evento a partir da proprieda id da classe
+	 * Deleta um local a partir da proprieda id da classe
 	 *
 	 * @return Boolean True se deletou e False se aconteceu algum erro
 	 */
