@@ -55,7 +55,16 @@ class Local {
 		$query = "SELECT * FROM {$this->table_name}";
 		$stmt = $this->conn->prepare($query);
  		$stmt->execute();
- 		return $stmt->fetchAll();
+ 		$locais = $stmt->fetchAll();
+
+ 		for($i = 0;$i < count($locais);$i++) {
+ 			$query = "SELECT * FROM locais_modalidades WHERE locais_id = ?";
+			$stmt = $this->conn->prepare($query);
+	 		$stmt->execute(array($locais[$i]['id']));
+	 		$locais[$i]['modalidades'] = $stmt->fetchAll();
+ 		}
+
+ 		return $locais;
 	}
 
 	/**

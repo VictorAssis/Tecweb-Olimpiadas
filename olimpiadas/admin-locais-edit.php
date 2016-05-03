@@ -1,29 +1,52 @@
 <?php
     include("init.php");
+
+    $local = new Local();
+
+    if (isset($_POST['btnSalvar'])) {
+        $local->id = $_POST['id'];
+        $local->nome = $_POST['nome'];
+        $local->descricao = $_POST['descricao'];
+        $local->modalidades = $_POST['modalidades'];
+
+        if ($local->update()) {
+            mensagemSucesso("Local alterado com sucesso.");
+            header("Location: admin-locais-listar.php");
+            die();
+        } else 
+            mensagemErro("Falha ao alterar local, tente novamente.");
+    }
+
+    $item = $local->findById($_GET['id']);
+    $item = $item[0];
+
+    $modalidade = new Modalidade();
+    $modalidades = $modalidade->find();
+
     include("header-admin.php");
 ?>
 <section id="content" class="container">
 	<h1 class="titulo-pagina">Editar Local <a class="link-voltar" href="javascript: history.go(-1);">< Voltar</a></h1>
 	<form method="post" action="">
+        <input type="hidden" name="id" value="<?php echo $item['id']; ?>" />
 		<p class="form-group">
             <label for="nome">Nome</label>
-            <input type="text" id="nome" class="campo" placeholder="Belo Horizonte" required="required" />
+            <input type="text" id="nome" name="nome" class="campo" placeholder="Belo Horizonte" required="required" value="<?php echo $item['nome']; ?>" />
         </p>
         <p class="form-group"> 
             <label for="modalidades">Modalidades</label>
-            <select name="modalidades" id="modalidades" class="campo selectMultiple" required="required" multiple>
-            	<option>Futebol</option>
-            	<option>Vôlei de praia</option>
-            	<option>Voleibol</option>
-            	<option>Ginástica artística</option>
+            <select name="modalidades" id="modalidades" class="campo selectMultiple" multiple>
+            <?php foreach ($modalidades as $modalidade) { ?>
+                <option value="<?php echo $modalidade['id']; ?>"><?php echo $modalidade['nome']; ?></option>
+            <?php } ?>
             </select>
         </p>
         <p class="form-group">
             <label for="descricao">Descrição</label>
-            <textarea id="descricao" class="campo tinyEditor" placeholder="Descrição do local" required="required"></textarea>
+            <textarea id="descricao" name="descricao" class="campo tinyEditor" placeholder="Descrição do local"><?php echo $item['descricao']; ?></textarea>
         </p>
         <p class="form-group">
-            <input type="submit" class="botao" value="Salvar" />
+            <input type="submit" class="botao" value="Salvar" name="btnSalvar" />
         </p>
 	</form>
 </section>

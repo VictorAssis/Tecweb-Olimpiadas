@@ -1,5 +1,18 @@
 <?php
 	include("init.php");
+
+	$local = new Local();
+
+	if (isset($_POST["btnExcluir"])) {
+		$local->id = $_POST["id"];
+		if ($local->delete())
+			mensagemSucesso("Local deletado com sucesso.");
+		else
+			mensagemErro("Falha ao deletar local, tente novamente.");
+	}
+
+	$itens = $local->find();
+
 	include("header-admin.php");
 ?>
 <section id="content" class="container">
@@ -15,76 +28,32 @@
 			</tr>
 		</thead>
 		<tbody>
+		<?php 
+			if ($itens) { 
+				foreach ($itens as $item) {
+		?>
 			<tr>
-				<td>1</td>
-				<td>Belo Horizonte</td>
-				<td>Futebol, Voleibol</td>
-				<td><a class="botao-comprar" href="admin-locais-edit.php"><i class="fa fa-pencil"></i></a></td>
-				<td><a class="botao-comprar" href="javascript: confirm('Tem certeza que deseja excluir este registro?')"><i class="fa fa-trash"></i></a></td>
+				<td><?php echo $item['id']; ?></td>
+				<td><?php echo $item['nome']; ?></td>
+				<td><?php echo count($item['modalidades']) ? implode(", ",$item['modalidades']) : '-'; ?></td>
+				<td><a class="botao-comprar" href="admin-locais-edit.php?id=<?php echo $item['id']; ?>"><i class="fa fa-pencil"></i></a></td>
+				<td>
+					<form action="" method="post">
+						<input type="hidden" name="id" value="<?php echo $item['id']; ?>" />
+						<button type="submit" name="btnExcluir" class="botao-comprar" onclick="return confirm('Tem certeza que deseja excluir este registro?');">
+							<i class="fa fa-trash"></i>
+						</button>
+					</form>
+				</td>
 			</tr>
+		<?php
+				}
+			} else {
+		?>
 			<tr>
-				<td>2</td>
-				<td>Belo Horizonte</td>
-				<td>Futebol, Voleibol</td>
-				<td><a class="botao-comprar" href="admin-locais-edit.php"><i class="fa fa-pencil"></i></a></td>
-				<td><a class="botao-comprar" href="javascript: confirm('Tem certeza que deseja excluir este registro?')"><i class="fa fa-trash"></i></a></td>
+				<td colspan="5">Nenhum local encontrado.</td>
 			</tr>
-			<tr>
-				<td>3</td>
-				<td>Belo Horizonte</td>
-				<td>Futebol, Voleibol</td>
-				<td><a class="botao-comprar" href="admin-locais-edit.php"><i class="fa fa-pencil"></i></a></td>
-				<td><a class="botao-comprar" href="javascript: confirm('Tem certeza que deseja excluir este registro?')"><i class="fa fa-trash"></i></a></td>
-			</tr>
-			<tr>
-				<td>4</td>
-				<td>Belo Horizonte</td>
-				<td>Futebol, Voleibol</td>
-				<td><a class="botao-comprar" href="admin-locais-edit.php"><i class="fa fa-pencil"></i></a></td>
-				<td><a class="botao-comprar" href="javascript: confirm('Tem certeza que deseja excluir este registro?')"><i class="fa fa-trash"></i></a></td>
-			</tr>
-			<tr>
-				<td>5</td>
-				<td>Belo Horizonte</td>
-				<td>Futebol, Voleibol</td>
-				<td><a class="botao-comprar" href="admin-locais-edit.php"><i class="fa fa-pencil"></i></a></td>
-				<td><a class="botao-comprar" href="javascript: confirm('Tem certeza que deseja excluir este registro?')"><i class="fa fa-trash"></i></a></td>
-			</tr>
-			<tr>
-				<td>6</td>
-				<td>Belo Horizonte</td>
-				<td>Futebol, Voleibol</td>
-				<td><a class="botao-comprar" href="admin-locais-edit.php"><i class="fa fa-pencil"></i></a></td>
-				<td><a class="botao-comprar" href="javascript: confirm('Tem certeza que deseja excluir este registro?')"><i class="fa fa-trash"></i></a></td>
-			</tr>
-			<tr>
-				<td>7</td>
-				<td>Belo Horizonte</td>
-				<td>Futebol, Voleibol</td>
-				<td><a class="botao-comprar" href="admin-locais-edit.php"><i class="fa fa-pencil"></i></a></td>
-				<td><a class="botao-comprar" href="javascript: confirm('Tem certeza que deseja excluir este registro?')"><i class="fa fa-trash"></i></a></td>
-			</tr>
-			<tr>
-				<td>8</td>
-				<td>Belo Horizonte</td>
-				<td>Futebol, Voleibol</td>
-				<td><a class="botao-comprar" href="admin-locais-edit.php"><i class="fa fa-pencil"></i></a></td>
-				<td><a class="botao-comprar" href="javascript: confirm('Tem certeza que deseja excluir este registro?')"><i class="fa fa-trash"></i></a></td>
-			</tr>
-			<tr>
-				<td>9</td>
-				<td>Belo Horizonte</td>
-				<td>Futebol, Voleibol</td>
-				<td><a class="botao-comprar" href="admin-locais-edit.php"><i class="fa fa-pencil"></i></a></td>
-				<td><a class="botao-comprar" href="javascript: confirm('Tem certeza que deseja excluir este registro?')"><i class="fa fa-trash"></i></a></td>
-			</tr>
-			<tr>
-				<td>10</td>
-				<td>Belo Horizonte</td>
-				<td>Futebol, Voleibol</td>
-				<td><a class="botao-comprar" href="admin-locais-edit.php"><i class="fa fa-pencil"></i></a></td>
-				<td><a class="botao-comprar" href="javascript: confirm('Tem certeza que deseja excluir este registro?')"><i class="fa fa-trash"></i></a></td>
-			</tr>
+		<?php } ?>
 		</tbody>
 	</table>
 </section>
