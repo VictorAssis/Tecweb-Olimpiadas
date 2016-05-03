@@ -46,6 +46,31 @@
 			$(".campodatahora").mask("99/99/9999 99:99");
        		$(".campocpf").mask("999.999.99-99");
        		$(".campofone").mask("(99)9999-9999?9");
+
+       		//Ajax da home
+       		$("#form-filtro-home").submit(function(){
+       			$.post('ajax-filtro-home.php',$(this).serialize(),function(resp){
+       				$(".tabela-eventos tbody").html(resp);
+       			});
+       			return false;
+       		});
+       		$("#form-filtro-home").trigger('submit');
+
+       		//Ajax de compra de ingressos
+       		$(".tabela-eventos").on("click",".botao-comprar",function(){
+       			$.post('ajax-compra-evento.php',{evento_id:$(this).data('evento-id')},function(resp){
+       				if (resp.retorno) {
+       					alert("Sua compra foi realizada com sucesso. Você será redirecionado pra página de meus eventos.");
+       					location.href="meus-eventos.php";
+       				} else
+       					if (resp.redirect != "") {
+       						alert(resp.error);
+       						location.href=resp.redirect;
+       					} else
+       						alert(resp.error);
+       			},'json');
+       			return false;
+       		});
 		});
 	</script>
 </body>

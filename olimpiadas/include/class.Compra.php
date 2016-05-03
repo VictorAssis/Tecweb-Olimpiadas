@@ -8,7 +8,7 @@
  * @author Victor Assis <contato@victorassis.com.br>
  * @copyright 2016 Victor Assis
  */
-class Modalidade {
+class Compra {
 	/**
 	 * Dados de conexão
 	 *
@@ -21,7 +21,7 @@ class Modalidade {
 	/**
 	 * Propriedades das compras
 	 *
-	 * @var int ID da modalidade
+	 * @var int ID da compra
 	 * @var int ID do usuário
 	 * @var int ID do evento
 	 * @var string Data de última alteração no registro

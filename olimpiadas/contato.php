@@ -1,9 +1,13 @@
 <?php
 include ("init.php");
+
+if (isset($_POST['btnEnviar'])) {
+    mensagemSucesso("Mensagem enviada com sucesso. Retornaremos o mais breve possível.");
+}
 include ("header.php");
 ?>
 <section id="content" class="container" >
-    <form name="frmcontato">
+    <form method="post" action="">
         <h1 class="titulo-pagina">Entre em contato</h1>
         <p class="form-group">
             <label for="nome">Nome</label>
@@ -22,7 +26,7 @@ include ("header.php");
             <textarea id="mensagem" class="campo" placeholder="Deixe sua mensagem"></textarea>
         </p>
         <p class="form-group">
-            <input type="submit" class="botao" onclick="Enviar();" value="Enviar" />
+            <input type="submit" class="botao" value="Enviar" name="btnEnviar" />
         </p>
     </form>
 </section>

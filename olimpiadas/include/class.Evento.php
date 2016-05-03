@@ -54,11 +54,45 @@ class Evento {
 	 *
 	 * @return Array
 	 */
-	public function find() {
+	public function find($data = null,$modalidade = null,$local = null,$pesquisa = null) {
 		//Monta query do banco
 		$query = "SELECT eventos.*, modalidades.nome as modalidade, locais.nome as local FROM {$this->table_name} INNER JOIN locais ON eventos.locais_id = locais.id INNER JOIN modalidades ON eventos.modalidades_id = modalidades.id";
+
+		//Filtros
+		$filtro = " WHERE";
+		$valores = array();
+		if (!is_null($data)) {
+			if ($filtro != " WHERE")
+				$filtro .= " AND";
+			//Formata data para Mysql
+			$data = substr($data, 6, 4) . '-' . substr($data, 3, 2) . '-' . substr($data, 0, 2);
+			$filtro .= " data LIKE ?";
+			$valores[] = $data . '%';
+		}
+		if (!is_null($modalidade)) {
+			if ($filtro != " WHERE")
+				$filtro .= " AND";
+			$filtro .= " modalidades_id = ?";
+			$valores[] = $modalidade;
+		}
+		if (!is_null($local)) {
+			if ($filtro != " WHERE")
+				$filtro .= " AND";
+			$filtro .= " locais_id = ?";
+			$valores[] = $local;
+		}
+		if (!is_null($pesquisa)) {
+			if ($filtro != " WHERE")
+				$filtro .= " AND";
+			$filtro .= " eventos.descricao LIKE ?";
+			$valores[] = '%' . $pesquisa . '%';
+		}
+
+		if ($filtro != " WHERE")
+			$query .= $filtro;
+
 		$stmt = $this->conn->prepare($query);
- 		$stmt->execute();
+ 		$stmt->execute($valores);
  		return $stmt->fetchAll();
 	}
 
@@ -132,6 +166,9 @@ class Evento {
 	public function update() {
 		//Pega data atual
 		$this->modified = date("Y-m-d H:i:s");
+
+		//Formata data para Mysql
+		$this->data = substr($this->data, 6, 4) . '-' . substr($this->data, 3, 2) . '-' . substr($this->data, 0, 2) . substr($this->data, 10) . ':00';
 
 		//Monta query do banco
 		$query = "UPDATE {$this->table_name} SET

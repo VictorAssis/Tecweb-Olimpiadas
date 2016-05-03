@@ -32,13 +32,31 @@
 		</div>
 		<div class="filtro-container">
 			<h2>Filtre os eventos</h2>
-			<form>
+			<form action="" method="post" id="form-filtro-home">
 				<p class="form-group"><label for="data">Data</label>
-				<input type="text" name="data" id="data" class="campo" /></p>
+				<input type="text" name="data" id="data" class="campo campodata" /></p>
 				<p class="form-group"><label for="modalidade">Modalidade</label>
-				<input type="text" name="modalidade" id="modalidade" class="campo" /></p>
-				<p class="form-group"><label for="locais">Locais</label>
-				<input type="text" name="locais" id="locais" class="campo" /></p>
+				<?php
+					$modalidade = new Modalidade();
+	    			$modalidades = $modalidade->find();
+	    		?>
+				<select name="modalidade" id="modalidade" class="campo">
+					<option value="">Todas</option>
+				<?php foreach ($modalidades as $modalidade) { ?>
+	            	<option value="<?php echo $modalidade['id']; ?>"><?php echo $modalidade['nome']; ?></option>
+	            <?php } ?>
+				</select></p>
+				<p class="form-group"><label for="local">Local</label>
+				<?php
+					$local = new Local();
+	    			$locais = $local->find();
+	    		?>
+				<select name="local" id="local" class="campo">
+					<option value="">Todos</option>
+				<?php foreach ($locais as $local) { ?>
+	            	<option value="<?php echo $local['id']; ?>"><?php echo $local['nome']; ?></option>
+	            <?php } ?>
+				</select></p>
 				<p class="form-group"><label for="pesquisa">Pesquisa</label>
 				<input type="text" name="pesquisa" id="pesquisa" class="campo" /></p>
 				<input type="submit" class="botao botao-claro">
@@ -56,88 +74,7 @@
 					<th class="coluna-botao"></th>
 				</tr>
 			</thead>
-			<tbody>
-				<tr>
-					<td>03 Ago 2016 13h - 18h</td>
-					<td>Futebol</td>
-					<td>Feminino - primeira fase (FB001)</td>
-					<td>Estádio Olímpico</td>
-					<td>40,00 - 70,00</td>
-					<td><a class="botao-comprar" href="javascript: alert('Compra realizada com sucesso.');"><i class="fa fa-shopping-cart"></i></a></td>
-				</tr>
-				<tr>
-					<td>03 Ago 2016 13h - 18h</td>
-					<td>Futebol</td>
-					<td>Feminino - primeira fase (FB001)</td>
-					<td>Estádio Olímpico</td>
-					<td>40,00 - 70,00</td>
-					<td><a class="botao-comprar" href="javascript: alert('Compra realizada com sucesso.');"><i class="fa fa-shopping-cart"></i></a></td>
-				</tr>
-				<tr>
-					<td>03 Ago 2016 13h - 18h</td>
-					<td>Futebol</td>
-					<td>Feminino - primeira fase (FB001)</td>
-					<td>Estádio Olímpico</td>
-					<td>40,00 - 70,00</td>
-					<td><a class="botao-comprar" href="javascript: alert('Compra realizada com sucesso.');"><i class="fa fa-shopping-cart"></i></a></td>
-				</tr>
-				<tr>
-					<td>03 Ago 2016 13h - 18h</td>
-					<td>Futebol</td>
-					<td>Feminino - primeira fase (FB001)</td>
-					<td>Estádio Olímpico</td>
-					<td>40,00 - 70,00</td>
-					<td><a class="botao-comprar" href="javascript: alert('Compra realizada com sucesso.');"><i class="fa fa-shopping-cart"></i></a></td>
-				</tr>
-				<tr>
-					<td>03 Ago 2016 13h - 18h</td>
-					<td>Futebol</td>
-					<td>Feminino - primeira fase (FB001)</td>
-					<td>Estádio Olímpico</td>
-					<td>40,00 - 70,00</td>
-					<td><a class="botao-comprar" href="javascript: alert('Compra realizada com sucesso.');"><i class="fa fa-shopping-cart"></i></a></td>
-				</tr>
-				<tr>
-					<td>03 Ago 2016 13h - 18h</td>
-					<td>Futebol</td>
-					<td>Feminino - primeira fase (FB001)</td>
-					<td>Estádio Olímpico</td>
-					<td>40,00 - 70,00</td>
-					<td><a class="botao-comprar" href="javascript: alert('Compra realizada com sucesso.');"><i class="fa fa-shopping-cart"></i></a></td>
-				</tr>
-				<tr>
-					<td>03 Ago 2016 13h - 18h</td>
-					<td>Futebol</td>
-					<td>Feminino - primeira fase (FB001)</td>
-					<td>Estádio Olímpico</td>
-					<td>40,00 - 70,00</td>
-					<td><a class="botao-comprar" href="javascript: alert('Compra realizada com sucesso.');"><i class="fa fa-shopping-cart"></i></a></td>
-				</tr>
-				<tr>
-					<td>03 Ago 2016 13h - 18h</td>
-					<td>Futebol</td>
-					<td>Feminino - primeira fase (FB001)</td>
-					<td>Estádio Olímpico</td>
-					<td>40,00 - 70,00</td>
-					<td><a class="botao-comprar" href="javascript: alert('Compra realizada com sucesso.');"><i class="fa fa-shopping-cart"></i></a></td>
-				</tr>
-				<tr>
-					<td>03 Ago 2016 13h - 18h</td>
-					<td>Futebol</td>
-					<td>Feminino - primeira fase (FB001)</td>
-					<td>Estádio Olímpico</td>
-					<td>40,00 - 70,00</td>
-					<td><a class="botao-comprar" href="javascript: alert('Compra realizada com sucesso.');"><i class="fa fa-shopping-cart"></i></a></td>
-				</tr>
-				<tr>
-					<td>03 Ago 2016 13h - 18h</td>
-					<td>Futebol</td>
-					<td>Feminino - primeira fase (FB001)</td>
-					<td>Estádio Olímpico</td>
-					<td>40,00 - 70,00</td>
-					<td><a class="botao-comprar" href="javascript: alert('Compra realizada com sucesso.');"><i class="fa fa-shopping-cart"></i></a></td>
-				</tr>
-			</tbody>
+			<tbody></tbody>
 		</table>
 	</div>
 </section>
