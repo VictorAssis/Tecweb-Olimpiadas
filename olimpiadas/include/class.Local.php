@@ -21,17 +21,19 @@ class Local {
 	/**
 	 * Propriedades dos locais
 	 *
-	 * @var int ID do evento
+	 * @var int ID do local
 	 * @var string Nome do local
 	 * @var string Descrição do local
 	 * @var string Data de última alteração no registro
 	 * @var string Data de criação do registro
+	 * @var Array Ids de modalidades associadas ao local
 	 */
 	public $id;
 	public $nome;
 	public $descricao;
 	public $modified;
 	public $created;
+	public $modalidades;
 
 	/**
 	 * Seta a instância de conexão com o banco
@@ -101,6 +103,25 @@ class Local {
  			$this->created
  		));
 
+ 		$idLocal = $this->conn->lastInsertId();
+
+ 		//Cadastra modalidades associadas
+ 		if (count($this->modalidades))
+ 			foreach ($this->modalidades as $modalidade) {
+ 				$query = "INSERT INTO locais_modalidades
+					(locais_id,
+					modalidades_id)
+				VALUES
+					(?,?)";
+				$stmt = $this->conn->prepare($query);
+
+				//Executa passando os valores
+		 		$result = $stmt->execute(array(
+		 			$idLocal,
+		 			$modalidade
+		 		));
+ 			}
+
  		//Retorna o resultado
         if($result){
             return true;
@@ -134,6 +155,28 @@ class Local {
  			$this->modified,
  			$this->id
  		));
+
+ 		//Deleta associações com modalidades anteriores
+ 		$query = "DELETE FROM locais_modalidades WHERE locais_id = ?";
+		$stmt = $this->conn->prepare($query);
+ 		$result = $stmt->execute(array($this->id));
+
+		//Cadastra modalidades associadas
+ 		if (count($this->modalidades))
+ 			foreach ($this->modalidades as $modalidade) {
+ 				$query = "INSERT INTO locais_modalidades
+					(locais_id,
+					modalidades_id)
+				VALUES
+					(?,?)";
+				$stmt = $this->conn->prepare($query);
+
+				//Executa passando os valores
+		 		$result = $stmt->execute(array(
+		 			$this->id,
+		 			$modalidade
+		 		));
+ 			}
 
  		//Retorna o resultado
         if($result){
