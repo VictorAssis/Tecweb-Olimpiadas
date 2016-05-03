@@ -5,7 +5,7 @@
 	</footer>
 	<!--Scripts-->
 	<script type="text/javascript" src="scripts/jquery.maskedinput.min.js"></script>
-       <script type="text/javascript" src="scripts/multiple-select.js"></script>
+  <script type="text/javascript" src="scripts/multiple-select.js"></script>
 	<script type="text/javascript" src="scripts/Chart.js"></script>
 	<script src="//cdn.tinymce.com/4/tinymce.min.js"></script>
 	<script type="text/javascript">
@@ -13,7 +13,7 @@
 			// Máscaras
       $(".campodata").mask("99/99/9999");
 			$(".campodatahora").mask("99/99/9999 99:99");
-   		$(".campocpf").mask("999.999.99-99");
+   		$(".campocpf").mask("999.999.999-99");
    		$(".campofone").mask("(99)9999-9999?9");
       $(".campopreco").each(function(){
         if(!$(this).val())
@@ -58,39 +58,6 @@
           container.find(".alterar-foto,.preview-foto").hide();
         });
       });
-
-      //Gráficos Dashboard
-      var data = {
-         labels: ["Vôlei de praia", "Voleibol", "Ginástica artística", "Futebol"],
-         datasets: [
-             {
-                 label: "My First dataset",
-                 fillColor: "rgba(220,220,220,0.5)",
-                 strokeColor: "rgba(220,220,220,0.8)",
-                 highlightFill: "rgba(220,220,220,0.75)",
-                 highlightStroke: "rgba(220,220,220,1)",
-                 data: [65, 59, 80, 81, 56, 55, 40]
-             }
-         ]
-      };
-      var ctx = $("#grafico1").get(0).getContext("2d");
-      var myNewChart = new Chart(ctx).Bar(data);
-
-      var data2 = {
-         labels: ["Coapacabana", "Barra da Tijuca", "Belo Horizonte", "São Paulo"],
-         datasets: [
-             {
-                 label: "My First dataset",
-                 fillColor: "rgba(220,220,220,0.5)",
-                 strokeColor: "rgba(220,220,220,0.8)",
-                 highlightFill: "rgba(220,220,220,0.75)",
-                 highlightStroke: "rgba(220,220,220,1)",
-                 data: [65, 59, 80, 81, 56, 55, 40]
-             }
-         ]
-      };
-      var ctx2 = $("#grafico2").get(0).getContext("2d");
-      var myNewChart2 = new Chart(ctx2).Bar(data2);
 		});
 	</script>
 </body>

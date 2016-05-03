@@ -96,6 +96,9 @@ class Usuario {
 		//Criptografa senha
 		$this->senha = md5($this->senha);
 
+		//Formata data para Mysql
+		$this->data_nascimento = substr($this->data_nascimento, 6, 4) . '-' . substr($this->data_nascimento, 3, 2) . '-' . substr($this->data_nascimento, 0, 2);
+
 		//Monta query do banco
 		$query = "INSERT INTO {$this->table_name}
 			(id,
@@ -147,6 +150,9 @@ class Usuario {
 
 		//Criptografa senha
 		$this->senha = $this->senha ? md5($this->senha) : null;
+
+		//Formata data para Mysql
+		$this->data_nascimento = substr($this->data_nascimento, 6, 4) . '-' . substr($this->data_nascimento, 3, 2) . '-' . substr($this->data_nascimento, 0, 2);
 
 		//Monta query do banco
 		$query = "UPDATE {$this->table_name} SET

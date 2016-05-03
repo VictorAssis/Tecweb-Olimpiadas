@@ -113,6 +113,30 @@ class Evento {
 	}
 
 	/**
+	 * Busca quantidade de eventos agrupando por modalidade
+	 *
+	 * @return Array
+	 */
+	public function eventosPorModalidade() {
+		$query = "SELECT modalidades.nome, count(eventos.id) as qtd FROM eventos INNER JOIN modalidades ON modalidades.id = eventos.modalidades_id GROUP BY modalidades.id";
+		$stmt = $this->conn->prepare($query);
+ 		$stmt->execute();
+ 		return $stmt->fetchAll();
+	}
+
+	/**
+	 * Busca eventos de um usuário ordendando ("agrupando") por modalidade
+	 *
+	 * @return Array
+	 */
+	public function eventosUsuario($order) {
+		$query = "SELECT eventos.*, modalidades.nome as modalidade, modalidades.id as modalidade_id, locais.nome as local, compras.id as idcompra, compras.created as datacompra FROM compras INNER JOIN eventos ON compras.eventos_id = eventos.id INNER JOIN modalidades ON eventos.modalidades_id = modalidades.id INNER JOIN locais ON eventos.locais_id = locais.id WHERE usuarios_id = ? ORDER BY " . $order;
+		$stmt = $this->conn->prepare($query);
+ 		$stmt->execute(array($this->usuarios_id));
+ 		return $stmt->fetchAll();
+	}
+
+	/**
 	 * Cria um novo evento a partir das propriedades da classe
 	 *
 	 * @return Boolean True se cadastrou e false se aconteceu algum erro

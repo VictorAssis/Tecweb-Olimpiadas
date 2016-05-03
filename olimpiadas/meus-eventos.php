@@ -5,8 +5,8 @@
 
 <section id="content" class="container">
 	<h1 class="titulo-pagina">Emitir Relatório</h1>
-	<input type="submit" value ="Por Modalidade" class="botao">
-	<input type="submit" value ="Por Data e Horário" class="botao">
+	<a class="botao" href="relatorio-modalidade.php" target="_blank">Por Modalidade</a>
+	<a class="botao" href="relatorio-data.php" target="_blank">Por Data e Horário</a>
 </section>
 
 <?php  

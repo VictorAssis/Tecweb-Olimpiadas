@@ -114,11 +114,20 @@ body.home #cabecalho.cabecalho-inicial .logo {
     min-height: 100%;
 }
 
-
-
 .banner-local {
 	width: 100%;
 	overflow: hidden;
+	position: relative;
+}
+.banner-local .flex-control-nav {
+	bottom: 20px;
+    z-index: 9999;
+}
+.banner-local .flex-control-paging li a {
+	background: rgb(255, 195, 0);
+}
+.banner-local .flex-control-paging li a.flex-active {
+    background: rgb(0, 165, 56);
 }
 .banner-local .overlay {
 	background: rgba(0,48,91,0.45);
@@ -128,22 +137,6 @@ body.home #cabecalho.cabecalho-inicial .logo {
 	top: 0;
 	left: 0;
 	z-index: 9;
-}
-.banner-local .chamada-banner {
-	font-size: 30px;
-	font-family: 'Raleway', sans-serif;
-	font-weight: 500;
-	position: absolute;
-	bottom: 30px;
-	left: 50%;
-	transform:translateX(-50%);
-	max-width: 400px;
-	color: #fff;
-	text-align: center;
-	z-index: 10;
-}
-.banner-local .chamada-banner i {
-	font-size: 40px;
 }
 .slider-local  img {
     max-width: 100%;
@@ -299,6 +292,10 @@ select.campo {
     background-image: url(../images/icon_select.png);
     background-repeat: no-repeat;
     background-position: right 10px center;
+}
+.campo:disabled {
+    background: #eee;
+    cursor: not-allowed;
 }
 
 /* TABELA */

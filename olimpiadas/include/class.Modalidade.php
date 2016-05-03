@@ -83,6 +83,18 @@ class Modalidade {
 	}
 
 	/**
+	 * Busca quantidade de modalidades agrupando por local
+	 *
+	 * @return Array
+	 */
+	public function modalidadePorLocal() {
+		$query = "SELECT locais.nome, count(modalidades_id) as qtd FROM eventos INNER JOIN locais ON locais.id = eventos.locais_id GROUP BY locais.id";
+		$stmt = $this->conn->prepare($query);
+ 		$stmt->execute();
+ 		return $stmt->fetchAll();
+	}
+
+	/**
 	 * Cria uma nova modalidade a partir das propriedades da classe
 	 *
 	 * @return Boolean True se cadastrou e false se aconteceu algum erro

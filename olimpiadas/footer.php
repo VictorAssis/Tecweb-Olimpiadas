@@ -44,7 +44,7 @@
 			// Máscaras
 			$(".campodata").mask("99/99/9999");
 			$(".campodatahora").mask("99/99/9999 99:99");
-       		$(".campocpf").mask("999.999.99-99");
+       		$(".campocpf").mask("999.999.999-99");
        		$(".campofone").mask("(99)9999-9999?9");
 
        		//Ajax da home
@@ -60,8 +60,8 @@
        		$(".tabela-eventos").on("click",".botao-comprar",function(){
        			$.post('ajax-compra-evento.php',{evento_id:$(this).data('evento-id')},function(resp){
        				if (resp.retorno) {
-       					alert("Sua compra foi realizada com sucesso. Você será redirecionado pra página de meus eventos.");
-       					location.href="meus-eventos.php";
+       					if (!confirm("Sua compra foi realizada com sucesso. Você deseja continuar comprando?"))
+       						location.href="meus-eventos.php";
        				} else
        					if (resp.redirect != "") {
        						alert(resp.error);
