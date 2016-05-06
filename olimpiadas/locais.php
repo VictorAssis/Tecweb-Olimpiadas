@@ -15,7 +15,7 @@
       ?>
       <li>
          <a href="local.php?id=<?php echo $item['id']; ?>">
-            <img src="uploads/<?php echo $item['foto_lista']; ?>"/>
+            <img src="uploads/<?php echo $item['foto']; ?>"/>
             <div class="hover">
                <h1><?php echo $item['nome']; ?></h1>
             </div>

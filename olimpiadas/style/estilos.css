@@ -143,9 +143,34 @@ body.home #cabecalho.cabecalho-inicial .logo {
     min-height: 100%;
 }
 
+.lista-atracoes li {
+	display: inline-block;
+	width: 25%;
+	float: left;
+	padding: 0 10px 30px;
+	position: relative;
+}
+.lista-atracoes li a {
+    color: inherit;
+}
+.lista-atracoes li a:hover {
+	text-decoration: none;
+}
+.lista-atracoes li img {
+	width: 100%;
+	display: block;
+}
+.lista-atracoes h1 {
+    font-size: 22px;
+	font-family: 'Raleway', sans-serif;
+	margin-top: 5px;
+}
 
 
-
+.imagem-destaque {
+	width: 100%;
+	height: auto;
+}
 
 body.home #cabecalho.cabecalho-inicial .menu a {
 	color: #fff;
@@ -332,6 +357,13 @@ select.campo {
 	margin-bottom: 20px;
 	color: #008AC6;
 }
+.subtitulo-pagina {
+	font-size: 24px;
+	margin-bottom: 20px;
+	font-weight: 300;
+	font-family: 'Raleway', sans-serif;
+	color: #00AA38;
+}
 .subtitulo {
 	font-size: 24px;
 	margin-bottom: 20px;
@@ -463,6 +495,10 @@ select.campo {
 .tabela-ficha .nome-ficha {
 	font-weight: bold;
 	color: #00B33B;
+}
+.regras-texto h2 {
+	font-weight: bold;
+	color: #0094D0;
 }
 
 /* ALERTAS DE MENSAGENS */

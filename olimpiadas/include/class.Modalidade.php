@@ -76,10 +76,16 @@ class Modalidade {
 		//Monta query do banco
 		$query = "SELECT * FROM {$this->table_name} WHERE id = ?";
 		$stmt = $this->conn->prepare($query);
-
-		//Executa passando os valores
  		$stmt->execute(array($id));
- 		return $stmt->fetchAll();
+ 		$modalidade = $stmt->fetchAll();
+
+ 		//Busca por locais
+		$query = "SELECT DISTINCT locais.* FROM locais INNER JOIN eventos ON eventos.locais_id = locais.id WHERE eventos.modalidades_id = ?";
+		$stmt = $this->conn->prepare($query);
+ 		$stmt->execute(array($id));
+ 		$modalidade[0]['locais'] = $stmt->fetchAll(); 		
+
+ 		return $modalidade;
 	}
 
 	/**

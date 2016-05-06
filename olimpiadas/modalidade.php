@@ -9,7 +9,7 @@ include ("header.php");
 ?>
 <section id="content" class="container">
 	<h1 class="titulo-pagina"><?php echo $item['nome']; ?></h1>
-	<img src="uploads/<?php echo $item['foto_destaque']; ?>">
+	<img class="imagem-destaque" src="uploads/<?php echo $item['foto_destaque']; ?>">
 	<h2 class="subtitulo-modalidade">Ficha Técnica</h2>
 	<table class="tabela-ficha">
 		<tr>
@@ -29,9 +29,28 @@ include ("header.php");
 		</tr>
 	</table>
 	<h2 class="subtitulo-modalidade">Regras do Jogos</h2>
-	<?php echo $item['regras']; ?>
-
+	<div class="regras-texto">
+		<?php echo $item['regras']; ?>
+	</div>
 	<h2 class="subtitulo-modalidade">Locais</h2>
+	<ol class="lista-interativa">
+      <?php 
+         if ($item['locais']) { 
+            foreach ($item['locais'] as $local) {
+      ?>
+      <li>
+         <a href="local.php?id=<?php echo $local['id']; ?>">
+            <img src="uploads/<?php echo $local['foto']; ?>"/>
+            <div class="hover">
+               <h1><?php echo $local['nome']; ?></h1>
+            </div>
+         </a>
+      </li>
+      <?php
+            }
+         }
+      ?>
+   	<ol>
 	<div class="clear"></div>
 
 </section>

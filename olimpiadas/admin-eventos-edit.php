@@ -56,7 +56,7 @@
             <select name="locais_id" id="local" class="campo" required="required">
             	<option "">Selecione um local</option>
             <?php foreach ($locais as $local) { ?>
-                <option value="<?php echo $local['id']; ?>" <?php echo $item['locais_id'] == $modalidade['id'] ? 'selected' : ''; ?>><?php echo $local['nome']; ?></option>
+                <option value="<?php echo $local['id']; ?>" <?php echo $item['locais_id'] == $local['id'] ? 'selected' : ''; ?>><?php echo $local['nome']; ?></option>
             <?php } ?>
             </select>
         </p>

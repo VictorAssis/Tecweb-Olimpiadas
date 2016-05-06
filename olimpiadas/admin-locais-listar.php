@@ -22,7 +22,6 @@
 			<tr>
 				<th>ID</th>
 				<th>Nome</th>
-				<th>Modalidades</th>
 				<th class="coluna-botao"></th>
 				<th class="coluna-botao"></th>
 			</tr>
@@ -35,7 +34,6 @@
 			<tr>
 				<td><?php echo $item['id']; ?></td>
 				<td><?php echo $item['nome']; ?></td>
-				<td><?php echo count($item['modalidades']) ? implode(", ",$item['modalidades']) : '-'; ?></td>
 				<td><a class="botao-comprar" href="admin-locais-edit.php?id=<?php echo $item['id']; ?>"><i class="fa fa-pencil"></i></a></td>
 				<td>
 					<form action="" method="post">

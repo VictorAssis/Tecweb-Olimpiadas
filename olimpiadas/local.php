@@ -20,12 +20,73 @@ include ("header.php");
 			</ul>
 		</div>
 	</div>
-	
 	<br/>
 	<h2 class ="titulo-pagina">Conheça o Local</h2>
 	<?php echo $item['descricao']; ?>
-	<br>
-	<h2 class ="titulo-pagina">Legado</h2>
-	<p>Os Jogos Olímpicos e Paralímpicos Rio 2016 deixarão de legado para a Região de Deodoro uma nova infraestrutura de centros comerciais e de lazer, assim como as instalações esportivas que comporão o Parque adical. Investimentos substanciais em infraestrutura de transporte vão melhorar o acesso desta região a Barra e a outras regiões do Rio.</p>
+	<br/>
+	<h2 class ="titulo-pagina">Atrações</h2>
+	<h3 class="subtitulo-pagina">Bares</h3>
+	<ul class="lista-atracoes">
+      <?php
+         if ($item['atracoes']) { 
+            foreach ($item['atracoes'] as $atracao) {
+            	if ($atracao['tipo'] != 0)
+            		continue;
+      ?>
+      <li>
+         <a href="<?php echo $atracao['link']; ?>" target="_blank">
+            <img src="uploads/<?php echo $atracao['foto']; ?>"/>
+            <h1><?php echo $atracao['nome']; ?></h1>
+            <p><?php echo $atracao['descricao']; ?></p>
+         </a>
+      </li>
+      <?php
+            }
+         }
+      ?>
+   	<ul>
+   	<div class="clear"></div>
+	<h3 class="subtitulo-pagina">Museus</h3>
+	<ul class="lista-atracoes">
+      <?php
+         if ($item['atracoes']) { 
+            foreach ($item['atracoes'] as $atracao) {
+            	if ($atracao['tipo'] != 1)
+            		continue;
+      ?>
+      <li>
+         <a href="<?php echo $atracao['link']; ?>" target="_blank">
+            <img src="uploads/<?php echo $atracao['foto']; ?>"/>
+            <h1><?php echo $atracao['nome']; ?></h1>
+            <p><?php echo $atracao['descricao']; ?></p>
+         </a>
+      </li>
+      <?php
+            }
+         }
+      ?>
+   	<ul>
+   	<div class="clear"></div>
+	<h3 class="subtitulo-pagina">Parques</h3>
+	<ul class="lista-atracoes">
+      <?php
+         if ($item['atracoes']) { 
+            foreach ($item['atracoes'] as $atracao) {
+            	if ($atracao['tipo'] != 2)
+            		continue;
+      ?>
+      <li>
+         <a href="<?php echo $atracao['link']; ?>" target="_blank">
+            <img src="uploads/<?php echo $atracao['foto']; ?>"/>
+            <h1><?php echo $atracao['nome']; ?></h1>
+            <p><?php echo $atracao['descricao']; ?></p>
+         </a>
+      </li>
+      <?php
+            }
+         }
+      ?>
+   	<ul>
+   	<div class="clear"></div>
 </section>
 <?php include ("footer.php"); ?>
