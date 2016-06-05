@@ -22,6 +22,7 @@ class Usuario {
 	 * Propriedades dos usuários
 	 *
 	 * @var int ID do usuário
+	 * @var string ID do usuário no Facebook
 	 * @var int Chave estrangeira do tipo de usuário
 	 * @var string Nome do usuário
 	 * @var string Email do usuário
@@ -56,6 +57,15 @@ class Usuario {
 	}
 
 	/**
+	 * Retorna o último id inserido
+	 *
+	 * @return void
+	 */
+	public function lastId(){
+		return $this->conn->lastInsertId();
+	}
+
+	/**
 	 * Lista todos os usuários cadastrados no banco
 	 *
 	 * @return Array
@@ -85,6 +95,22 @@ class Usuario {
 	}
 
 	/**
+	 * Lista o usuário com um email específico
+	 *
+	 * @param string $email Email do usuário desejada
+	 * @return Array
+	 */
+	public function findByEmail($email) {
+		//Monta query do banco
+		$query = "SELECT * FROM {$this->table_name} WHERE email = ?";
+		$stmt = $this->conn->prepare($query);
+
+		//Executa passando os valores
+ 		$stmt->execute(array($email));
+ 		return $stmt->fetchAll();
+	}
+
+	/**
 	 * Cria um novo usuário a partir das propriedades da classe
 	 *
 	 * @return Boolean True se cadastrou e false se aconteceu algum erro
@@ -103,6 +129,7 @@ class Usuario {
 		$query = "INSERT INTO {$this->table_name}
 			(id,
 			usuarios_tipos_id,
+			facebook_id,
 			nome,
 			email,
 			senha,
@@ -113,13 +140,14 @@ class Usuario {
 			modified,
 			created)
 		VALUES
-			(?,?,?,?,?,?,?,?,?,?,?)";
+			(?,?,?,?,?,?,?,?,?,?,?,?)";
 		$stmt = $this->conn->prepare($query);
 
 		//Executa passando os valores
  		$result = $stmt->execute(array(
  			$this->id,
  			$this->usuarios_tipos_id,
+ 			$this->facebook_id,
  			$this->nome,
  			$this->email,
  			$this->senha,

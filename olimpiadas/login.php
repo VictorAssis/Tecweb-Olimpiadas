@@ -48,7 +48,8 @@
 			<input type="email" name="email" id="email" placeholder="Email" class="campo" required="required" maxlength="255" value="<?php echo isset($_POST['email']) && isset($_POST['btnLogin']) ? $_POST['email'] : ""; ?>"></p>
 	        <p class="form-group"><label for="senha">Senha:</label>
 	        <input type="password" name="senha" id="senha" placeholder="Senha" class="campo" required="required" maxlength="50"></p>
-	        <input type="submit" value="Login" name="btnLogin" class="botao">        
+	        <input type="submit" value="Login" name="btnLogin" class="botao">
+	        <a href="login-facebook.php" class="botao botao-facebook">Entrar com Facebook</a>
 			<br><br><a href="esqueceu-senha.php">Esqueceu sua senha?</a>
 		</form>
 	</div>

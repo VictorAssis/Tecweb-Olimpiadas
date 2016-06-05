@@ -121,7 +121,7 @@ body.home #cabecalho.cabecalho-inicial .logo {
 }
 .banner-local .flex-control-nav {
 	bottom: 20px;
-    z-index: 9999;
+    z-index: 2;
 }
 .banner-local .flex-control-paging li a {
 	background: rgb(255, 195, 0);
@@ -143,6 +143,10 @@ body.home #cabecalho.cabecalho-inicial .logo {
     min-height: 100%;
 }
 
+#map {
+	height: 300px;
+	margin-bottom: 20px;
+}
 .lista-atracoes li {
 	display: inline-block;
 	width: 25%;
@@ -286,6 +290,21 @@ body.home #content {
     padding: 0 15px;
     vertical-align: middle;
     margin-left: 15px;
+}
+.botao-facebook {
+    border-radius: 3px;
+    background-color: #3b5998;
+    background-image: url('../images/ico-facebook.png');
+    background-position: 10px 50%;
+    background-size: 23px;
+    background-repeat: no-repeat;
+    -webkit-transition: background-color 733ms ease;
+    transition: background-color 733ms ease;
+    text-align: center;
+    border: none;
+    color: #fff;
+    text-transform: none;
+    padding-left: 45px;
 }
 
 /* FORMULÁRIO */

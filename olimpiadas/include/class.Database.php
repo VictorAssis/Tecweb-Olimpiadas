@@ -19,9 +19,9 @@ class Database {
 	 * @var string Senha do MySQL
 	 */
     private $host = "localhost";
-    private $db_name = "olimpiadas";
-    private $username = "root";
-    private $password = "";
+    private $db_name = "victoras_olimpiadas";
+    private $username = "victoras_assis";
+    private $password = "g4d0n33000";
 
     /**
      * Instância da conexão com o banco
