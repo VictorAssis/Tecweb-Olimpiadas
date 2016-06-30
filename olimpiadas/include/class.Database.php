@@ -21,7 +21,7 @@ class Database {
     private $host = "localhost";
     private $db_name = "victoras_olimpiadas";
     private $username = "victoras_assis";
-    private $password = "g4d0n33000";
+    private $password = "123456";
 
     /**
      * Instância da conexão com o banco
